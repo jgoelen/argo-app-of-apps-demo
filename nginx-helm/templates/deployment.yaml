@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app-deployment
+  namespace: {{ .Values.app.namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: demo-app
+  replicas: {{ .Values.app.replicas }}
+  template:
+    metadata:
+      annotations:
+       checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+       checksum/secrets: {{ include (print $.Template.BasePath "/sealed-secrets.yaml") . | sha256sum }}
+      labels:
+        app: demo-app
+        log: {{ .Values.app.logLabel }}
+    spec:
+      containers:
+        - name: nginx
+          image: {{ tpl .Values.app.image . }}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: demo-configmap
+            - secretRef:
+                name: demo-secrets
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "500m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
