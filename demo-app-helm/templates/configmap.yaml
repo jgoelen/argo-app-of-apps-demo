@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-configmap
+  namespace:  {{ .Values.namespace }}
+data:
+{{- $path := printf "config/%s/configmap-values.yaml" .Values.environment }} {{ range .Files.Lines $path }}
+  {{ . }}{{ end }}
