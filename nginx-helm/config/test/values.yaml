@@ -1,3 +1,0 @@
-app:
-  image: "nginx:latest"
-  replicas: 1
