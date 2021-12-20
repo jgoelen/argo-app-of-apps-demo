@@ -1,1 +1,19 @@
-#default placeholder
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-application
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/jgoelen/argo-app-of-apps-demo.git
+    targetRevision: HEAD
+    path: demo-app-helm
+    helm:
+      valueFiles:
+      - test/values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: demo
