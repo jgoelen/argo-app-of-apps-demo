@@ -1,3 +1,5 @@
 app:
   image: "nginx:latest"
   replicas: 1
+environment: test
+  
