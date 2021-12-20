@@ -15,7 +15,6 @@ spec:
        checksum/secrets: {{ include (print $.Template.BasePath "/sealed-secrets.yaml") . | sha256sum }}
       labels:
         app: demo-app
-        log: {{ .Values.app.logLabel }}
     spec:
       containers:
         - name: nginx
