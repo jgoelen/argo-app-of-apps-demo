@@ -13,7 +13,7 @@ spec:
     path: demo-app-helm
     helm:
       valueFiles:
-      - test/values.yaml
+      - config/test/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: demo
