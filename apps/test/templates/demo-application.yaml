@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/jgoelen/argo-app-of-apps-demo.git
-    targetRevision: HEAD
+    targetRevision: update_secrets_gert
     path: demo-app-helm
     helm:
       valueFiles:
