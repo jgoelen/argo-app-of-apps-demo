@@ -1,4 +1,0 @@
-app:
-  namespace: "demo"
-  image: "nginx:latest"
-  replicas: 1

@@ -8,8 +8,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/jgoelen/argo-app-of-apps-demo.git
-    targetRevision: update_secrets_gert
+    repoURL: https://github.com/jgoelen/demo-app-helm
+    targetRevision: HEAD
     path: demo-app-helm
     helm:
       valueFiles:
@@ -19,4 +19,4 @@ spec:
     namespace: demo
   syncPolicy:
     syncOptions:
-      - CreateNamespace=true
+    - CreateNamespace=true
