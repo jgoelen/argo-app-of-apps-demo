@@ -10,6 +10,7 @@ spec:
   source:
     repoURL: https://github.com/jgoelen/demo-app-helm
     targetRevision: HEAD
+    path: .
     helm:
       valueFiles:
       - config/test/values.yaml
