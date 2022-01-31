@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/jgoelen/demo-app-helm
-    targetRevision: HEAD
+    targetRevision: add_sealed_secrets
     path: .
     helm:
       valueFiles:
